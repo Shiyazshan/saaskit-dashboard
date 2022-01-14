@@ -99,6 +99,8 @@ const Aside = styled.aside`
     min-height: 700px;
     box-shadow: 6px 0px 18px rgba(0, 0, 0, 8%);
     position: fixed;
+    z-index: 10;
+    background: #fff;
 `;
 const TopSection = styled.div`
     border-bottom: 1px solid #EBEFF2;
@@ -207,6 +209,8 @@ const TopBar = styled.div`
     align-items: center;
     position: fixed;
     margin-left: 279px;
+    background: #fff;
+    
 `;
 const TopBarForm = styled.form`
     width: 60%;
