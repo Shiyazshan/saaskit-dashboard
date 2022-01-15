@@ -10,3 +10,15 @@ body{
   font-family: 'Poppins','Open Sans';
   background: #E5E5E5;
 }
+.globalstyle {
+  /* margin-left: 328px; */
+  margin-left: 100px;
+  z-index: -2;
+  margin-top: 100px;
+}
+.labelled{
+  background: #109CF1;
+  color: #fff;
+  border-radius: 50%;
+  padding: 3px;
+}

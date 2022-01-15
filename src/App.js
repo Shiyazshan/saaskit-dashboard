@@ -1,16 +1,27 @@
+import React, { useState} from 'react';
+import { BrowserRouter } from "react-router-dom";
 import './App.css';
-import Login from './components/Login';
 import Sidebar from '../src/components/includes/Sidebar'
-import Dashboard from './components/Dashboard';
+import Roterapp from './components/includes/Roterapp';
+import Login from './components/Login'
+
 
 function App() {
+  const [active,setActive] = useState(true)
+  const [isLoggedin,setLoggedin]=useState(true)
+
   return (
     <>
-    {/* <Login /> */}
-    <Sidebar />
-    <Dashboard />
+    <BrowserRouter>
+        {isLoggedin ?<>
+        <Sidebar active={active} setActive={setActive} />
+         <Roterapp active={active} setActive={setActive}/>
+         </> :
+        <Login />}
+    </BrowserRouter>
     </>
   );
 }
 
 export default App;
+
