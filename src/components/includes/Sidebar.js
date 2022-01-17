@@ -21,6 +21,9 @@ import { Link } from "react-router-dom";
 
 export default function Sidebar({active , setActive}) {
   const [menudata, setMenudata] = useState("");
+  const logout = (e) => {
+    localStorage.clear();
+  }
   return (
     <>
       <Container>
@@ -136,10 +139,12 @@ export default function Sidebar({active , setActive}) {
               name="search"
               placeholder="Global Search"
             />
+            <Logout onClick={logout}>Logout</Logout>
           </TopBarForm>
           <BellImageContainer>
             <BellImage src={Bell} alt="Image" />
           </BellImageContainer>
+          
         </TopBar>
       </Container>
     </>
@@ -275,7 +280,7 @@ const ToggleText = styled.h4`
   }
 `;
 const TopBar = styled.div`
-  width: 100%; 
+  width: 96%; 
   height: 61px;
   border-bottom: 1px solid #ebeff2;
   display: flex;
@@ -287,7 +292,9 @@ const TopBar = styled.div`
   transition: .4s ease ;
 `;
 const TopBarForm = styled.form`
-  width: 60%;
+  width: 94%;
+  display: flex;
+  
 `;
 const InputSearch = styled.input`
   padding: 12px 44px;
@@ -299,6 +306,16 @@ const InputSearch = styled.input`
   &::placeholder {
     color: #90a0b7;
   }
+`;
+const Logout = styled.button`
+  background: #f7685b;
+  padding: 6px 26px;
+  border-radius: 4px;
+  color: #fff;
+  border:none;
+  font-size: 12px;
+  font-family: 'Poppins';
+  cursor: pointer;
 `;
 const BellImageContainer = styled.div`
   margin-right: 30px;

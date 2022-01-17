@@ -1,5 +1,10 @@
-import React,{ useState } from 'react';
+import React,{ useState , useContext} from 'react';
+import { BASE_URL } from '../axiosConfig';
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios';
 import styled from 'styled-components';
+import { Context } from '../context/store';
+
 import '../App.css';
 import Bgimage from '../assets/images/Bg.jpg'
 import Email from '../assets/images/Vector.svg'
@@ -8,9 +13,37 @@ import Ellipse1 from '../assets/images/Ellipse 1.png'
 import Ellipse2 from '../assets/images/Ellipse 2.png'
 
 
-export default function Login() {
+export default function Login({isLoggedin,setLoggedin}) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [message, setMessage] = useState('')
+    const {state,dispatch}=useContext(Context)
+    const {name}=state.name;
+    console.log(state.name,"my name");
+    const navigate = useNavigate()
+    console.log(name);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        axios
+            .post(`${BASE_URL}`,{ username, password })
+            .then((response) =>{
+                console.log(response.data.status)
+                let data = response.data;
+                // response.status ? setLoggedin(true) : setLoggedin(false);
+                localStorage.setItem("user_data", JSON.stringify(data));
+                response.data.status===true ? setLoggedin(true) : setLoggedin(false);
+                navigate.push('/Dashboard')
+                console.log(data.status);
+            })
+            .catch((error) => {
+                console.log(error.response.status)
+                if (error.response.status === 401) {
+                    setMessage('account is not valid')
+                }
+            })
+
+    }
+    // console.log();
     return (
         <>
             <MainContainer>
@@ -36,7 +69,7 @@ export default function Login() {
                             <Form 
                                 onSubmit={handleSubmit}>
                                 <InputEmail 
-                                    type="email"  
+                                    type="text "  
                                     placeholder="Email Address" 
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
@@ -45,8 +78,9 @@ export default function Login() {
                                     type="password" 
                                     placeholder="Password"
                                     value={password}
-                                    onChange={(e) => setUsername(e.target.value)}
+                                    onChange={(e) => setPassword(e.target.value)}
                                 />
+                                {message && <Message>{message}</Message>}
                                 <FormButton type="submit">Login</FormButton>
                             </Form>
                         </RightContent>
@@ -173,6 +207,11 @@ const InputPassword = styled.input`
     background-repeat: no-repeat ;
     background-position: left 30px center;
 
+`;
+const Message = styled.h2`
+    font-size: 14px;
+    font-family: 'Poppins';
+    color: red;
 `;
 const FormButton = styled.button`
     padding: 18px 26px 18px 26px;
