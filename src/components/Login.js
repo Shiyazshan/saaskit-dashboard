@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useState } from 'react';
 import styled from 'styled-components';
 import '../App.css';
 import Bgimage from '../assets/images/Bg.jpg'
@@ -9,6 +9,8 @@ import Ellipse2 from '../assets/images/Ellipse 2.png'
 
 
 export default function Login() {
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
     return (
         <>
             <MainContainer>
@@ -31,9 +33,20 @@ export default function Login() {
                             <Title>SaaS Kit</Title>
                             <TextHead>Hello!</TextHead>
                             <SubText>Sign Up to Get Started</SubText>
-                            <Form>
-                                <InputEmail type="email"  placeholder="Email Address" />
-                                <InputPassword type="password" placeholder="Password" />
+                            <Form 
+                                onSubmit={handleSubmit}>
+                                <InputEmail 
+                                    type="email"  
+                                    placeholder="Email Address" 
+                                    value={username}
+                                    onChange={(e) => setUsername(e.target.value)}
+                                />
+                                <InputPassword 
+                                    type="password" 
+                                    placeholder="Password"
+                                    value={password}
+                                    onChange={(e) => setUsername(e.target.value)}
+                                />
                                 <FormButton type="submit">Login</FormButton>
                             </Form>
                         </RightContent>
@@ -143,7 +156,7 @@ const InputEmail = styled.input`
     padding: 18px 26px 18px 61px;
     width: 272px;
     border-radius: 8px;
-    border: 1px solid #EEEEEE;
+    border: 1px solid #cecccc;
     margin-bottom: 20px;
     background: url(${Email});
     background-repeat: no-repeat;
@@ -154,7 +167,7 @@ const InputPassword = styled.input`
     padding: 18px 26px 18px 61px;
     width: 272px;
     border-radius: 8px;
-    border: 1px solid #EEEEEE;
+    border: 1px solid #cecccc;
     margin-bottom: 20px;
     background: url(${Password});
     background-repeat: no-repeat ;

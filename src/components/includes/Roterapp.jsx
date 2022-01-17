@@ -6,7 +6,7 @@ import {
   } from "react-router-dom";
 import Contact from '../Contact';
 import Dashboard from '../Dashboard';
-import Task from './Task';
+import Task from '../Task';
 
 function Roterapp({active, setActive}) {
     return (

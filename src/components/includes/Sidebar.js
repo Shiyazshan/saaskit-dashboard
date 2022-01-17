@@ -208,6 +208,7 @@ const List = styled(Link)`
   margin-left: 20px;
   margin-bottom: 25px;
   cursor: pointer;
+  text-decoration: none;
 `;
 const ImageContainer = styled.div`
   margin-right: 28px;
