@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Dashboard from "../../assets/images/icon/dashboard.png";
 import Tasks from "../../assets/images/icon/tasks.png";
@@ -17,17 +18,20 @@ import ActiveEmail from "../../assets/images/icon/email-active.png";
 import ActiveDeals from "../../assets/images/icon/deals-active.png";
 import ActiveSettingsImg from "../../assets/images/icon/settings-active.png";
 import ActiveToggle from "../../assets/images/icon/toggle-active.png";
-import { Link } from "react-router-dom";
 
-export default function Sidebar({active , setActive}) {
+export default function Sidebar({ active, setActive }) {
   const [menudata, setMenudata] = useState("");
   const logout = (e) => {
     localStorage.clear();
-  }
+  };
   return (
     <>
       <Container>
-        <Aside onMouseOver={()=> setActive(true)} onMouseOut={()=> setActive(false)} active={active}>
+        <Aside
+          onMouseOver={() => setActive(true)}
+          onMouseOut={() => setActive(false)}
+          active={active}
+        >
           <TopSection>
             <TopText>SaaS Kit</TopText>
           </TopSection>
@@ -43,8 +47,8 @@ export default function Sidebar({active , setActive}) {
           <Nav>
             <Ul>
               <nav>
-              <List to="/" onClick={() => setMenudata("dashboard")}>
-                {/* <Link to='/'> */}
+                <List to="/" onClick={() => setMenudata("dashboard")}>
+                  {/* <Link to='/'> */}
                   <ImageContainer>
                     {menudata === "dashboard" ? (
                       <ActiveImage src={ActiveDashboard} alt="Image" />
@@ -55,84 +59,91 @@ export default function Sidebar({active , setActive}) {
                   <ItemName className={menudata === "dashboard" && "active"}>
                     Dashboard
                   </ItemName>
-                {/* </Link> */}
-              </List>
-              <List to="/task" onClick={() => setMenudata("task")}>
-                <ImageContainer active={active}>
-                  {menudata === "task" ? (
-                    <ActiveImage src={ActiveTasks} alt="Image" />
-                  ) : (
-                    <Image src={Tasks} alt="Image" />
-                  )}
-                </ImageContainer>
-                <ItemName className={menudata === "task" && "active"}>
-                  Tasks
-                </ItemName>
-              </List>
-              <List to="/" onClick={() => setMenudata("email")}>
-                <ImageContainer>
-                  {menudata === "email" ? (
-                    <ActiveImage src={ActiveEmail} alt="Image" />
-                  ) : (
-                    <Image src={Email} alt="Image" />
-                  )}
-                </ImageContainer>
-                <ItemName className={menudata === "email" && "active"}>
-                  Email
-                </ItemName>
-              </List>
-              <List to="/contact" onClick={() => setMenudata("contacts")}>
-                <ImageContainer>
-                  {menudata === "contacts" ? (
-                    <ActiveImage src={ActiveContacts} alt="Image" />
-                  ) : (
-                    <Image src={Contacts} alt="Image" />
-                  )}
-                </ImageContainer>
-                <ItemName className={menudata === "contacts" && "active"}>
-                  Contacts
-                </ItemName>
-              </List>
-              <List to="/" onClick={() => setMenudata("deals")}>
-                <ImageContainer>
-                  {menudata === "deals" ? (
-                    <ActiveImage src={ActiveDeals} alt="Image" />
-                  ) : (
-                    <Image src={Deals} alt="Image" />
-                  )}
-                </ImageContainer>
-                <ItemName className={menudata === "deals" && "active"}>
-                  Deals
-                </ItemName>
-              </List>
+                  {/* </Link> */}
+                </List>
+                <List to="/task" onClick={() => setMenudata("task")}>
+                  <ImageContainer active={active}>
+                    {menudata === "task" ? (
+                      <ActiveImage src={ActiveTasks} alt="Image" />
+                    ) : (
+                      <Image src={Tasks} alt="Image" />
+                    )}
+                  </ImageContainer>
+                  <ItemName className={menudata === "task" && "active"}>
+                    Tasks
+                  </ItemName>
+                </List>
+                <List to="/" onClick={() => setMenudata("email")}>
+                  <ImageContainer>
+                    {menudata === "email" ? (
+                      <ActiveImage src={ActiveEmail} alt="Image" />
+                    ) : (
+                      <Image src={Email} alt="Image" />
+                    )}
+                  </ImageContainer>
+                  <ItemName className={menudata === "email" && "active"}>
+                    Email
+                  </ItemName>
+                </List>
+                <List to="/contact" onClick={() => setMenudata("contacts")}>
+                  <ImageContainer>
+                    {menudata === "contacts" ? (
+                      <ActiveImage src={ActiveContacts} alt="Image" />
+                    ) : (
+                      <Image src={Contacts} alt="Image" />
+                    )}
+                  </ImageContainer>
+                  <ItemName className={menudata === "contacts" && "active"}>
+                    Contacts
+                  </ItemName>
+                </List>
+                <List to="/" onClick={() => setMenudata("deals")}>
+                  <ImageContainer>
+                    {menudata === "deals" ? (
+                      <ActiveImage src={ActiveDeals} alt="Image" />
+                    ) : (
+                      <Image src={Deals} alt="Image" />
+                    )}
+                  </ImageContainer>
+                  <ItemName className={menudata === "deals" && "active"}>
+                    Deals
+                  </ItemName>
+                </List>
               </nav>
             </Ul>
             <Bottom>
               <Settings onClick={() => setMenudata("settings")}>
-
                 <SettingsImageContainer active={active}>
-                    {menudata === "settings" ?
-                  (<ActiveImage src={ActiveSettingsImg} alt="Image" />)
-                  :(<SettingsImage src={SettingsImg} alt="Image" />)
-                    }
+                  {menudata === "settings" ? (
+                    <ActiveImage src={ActiveSettingsImg} alt="Image" />
+                  ) : (
+                    <SettingsImage src={SettingsImg} alt="Image" />
+                  )}
                 </SettingsImageContainer>
 
-                <SettingsText className={ menudata === "settings" && "active" } >Settings</SettingsText>
-                
+                <SettingsText className={menudata === "settings" && "active"}>
+                  Settings
+                </SettingsText>
               </Settings>
-              <ToggleBar onClick={() => setMenudata("toggle") }>
+              <ToggleBar onClick={() => setMenudata("toggle")}>
                 <ToggleImageContainer>
-                    {menudata === "toggle" ?
-                 ( <ActiveImage src={ActiveToggle} alt="Image" />)
-                  :(<ToggleImage src={Toggle} alt="Image" />)
-                    }
+                  {menudata === "toggle" ? (
+                    <ActiveImage src={ActiveToggle} alt="Image" />
+                  ) : (
+                    <ToggleImage src={Toggle} alt="Image" />
+                  )}
                 </ToggleImageContainer>
-                <ToggleText className={menudata === "toggle" && "active" } onClick={()=>setActive((prev)=>!prev)} >Toggle Sidebar</ToggleText>
+                <ToggleText
+                  className={menudata === "toggle" && "active"}
+                  onClick={() => setActive((prev) => !prev)}
+                >
+                  Toggle Sidebar
+                </ToggleText>
               </ToggleBar>
             </Bottom>
           </Nav>
         </Aside>
-        <TopBar active={active} >
+        <TopBar active={active}>
           <TopBarForm>
             <InputSearch
               type="text"
@@ -144,7 +155,6 @@ export default function Sidebar({active , setActive}) {
           <BellImageContainer>
             <BellImage src={Bell} alt="Image" />
           </BellImageContainer>
-          
         </TopBar>
       </Container>
     </>
@@ -155,16 +165,14 @@ const Container = styled.div`
   display: flex;
 `;
 const Aside = styled.aside`
-  /* width: 280px; */
-  /* width: 50px; */
-  transition: .4s ease;
-  width:${({active})=>active ? '280px' : '72px'};
+  transition: 0.4s ease;
+  width: ${({ active }) => (active ? "280px" : "72px")};
   min-height: 700px;
   box-shadow: 6px 0px 18px rgba(0, 0, 0, 8%);
   position: fixed;
   z-index: 10;
   background: #fff;
-  overflow:hidden;
+  overflow: hidden;
 `;
 const TopSection = styled.div`
   border-bottom: 1px solid #ebeff2;
@@ -188,8 +196,7 @@ const UserImageContainer = styled.div`
   margin-right: 10px;
 `;
 const UserDetail = styled.div`
-    display:${({active})=>active ? 'block' : 'none'};
-
+  display: ${({ active }) => (active ? "block" : "none")};
 `;
 const UserImage = styled.img`
   border-radius: 50%;
@@ -218,11 +225,8 @@ const List = styled(Link)`
 const ImageContainer = styled.div`
   margin-right: 28px;
 `;
-const Image = styled.img`
-`;
-const ActiveImage = styled.img`
- 
-`;
+const Image = styled.img``;
+const ActiveImage = styled.img``;
 const ItemName = styled.h4`
   color: #334d6e;
   font-family: "Poppins";
@@ -237,11 +241,9 @@ const Settings = styled.div`
   margin-left: 20px;
 `;
 const SettingsImageContainer = styled.div`
-  margin-right: 28PX;
+  margin-right: 28px;
 `;
-const SettingsImage = styled.img`
-
-`;
+const SettingsImage = styled.img``;
 const SettingsText = styled.h4`
   color: #334d6e;
   font-family: "Poppins";
@@ -265,9 +267,7 @@ const ToggleBar = styled.div`
 const ToggleImageContainer = styled.div`
   margin-right: 38px;
 `;
-const ToggleImage = styled.img`
-    
-`;
+const ToggleImage = styled.img``;
 const ToggleText = styled.h4`
   color: #90a0b7;
   font-family: "Poppins";
@@ -275,12 +275,12 @@ const ToggleText = styled.h4`
   font-size: 14px;
   margin-bottom: 20px;
   cursor: pointer;
-  &.active{
+  &.active {
     color: #109cf1;
   }
 `;
 const TopBar = styled.div`
-  width: 96%; 
+  width: 96%;
   height: 61px;
   border-bottom: 1px solid #ebeff2;
   display: flex;
@@ -288,13 +288,12 @@ const TopBar = styled.div`
   align-items: center;
   position: fixed;
   background: #fff;
-  padding-left: ${({active}) => active ? '259px' : '63px' };
-  transition: .4s ease ;
+  padding-left: ${({ active }) => (active ? "259px" : "63px")};
+  transition: 0.4s ease;
 `;
 const TopBarForm = styled.form`
   width: 94%;
   display: flex;
-  
 `;
 const InputSearch = styled.input`
   padding: 12px 44px;
@@ -312,9 +311,9 @@ const Logout = styled.button`
   padding: 6px 26px;
   border-radius: 4px;
   color: #fff;
-  border:none;
+  border: none;
   font-size: 12px;
-  font-family: 'Poppins';
+  font-family: "Poppins";
   cursor: pointer;
 `;
 const BellImageContainer = styled.div`

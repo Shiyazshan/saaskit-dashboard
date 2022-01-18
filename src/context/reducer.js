@@ -5,6 +5,11 @@ const Reducer = (state , action)=> {
                 ...state,
                 name: action.name
             };
+        case "UPDATE_USER":
+            return {
+                ...state,
+                accessToken: action.accessToken
+            }
             default :
             return state;
     }

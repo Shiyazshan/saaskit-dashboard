@@ -2,7 +2,10 @@ import React,{createContext, useContext, useReducer} from 'react'
 import reducer from './reducer'
 
 const initialState = {
-    name:"shiyaskhan"
+    name:"shiyaskhan",
+    userdata:{
+        accessToken:{}
+    },
 };
 
 const Store = ({children}) => {

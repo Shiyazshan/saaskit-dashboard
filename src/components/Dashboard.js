@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import { Chart } from 'chart.js'
 import styled from 'styled-components'
 import George from '../assets/images/george.png'
 import Rebecca from '../assets/images/rebecca.png'
@@ -9,7 +10,7 @@ import Round from '../assets/images/round.png'
 import Round1 from '../assets/images/round2.png'
 import Delete from '../assets/images/delete.png'
 import Edit from '../assets/images/edit.png'
-
+import LineChart from './LineChart'
 export default function Dashboard({active, setActive}) {
     
     return (
@@ -211,6 +212,7 @@ export default function Dashboard({active, setActive}) {
                             <ChartTop>
                                 <CTop>Task</CTop>
                                 <CSmall>Show: </CSmall>
+                                {/* <LineChart/> */}
                             </ChartTop>
                             
                         </PieChart1>

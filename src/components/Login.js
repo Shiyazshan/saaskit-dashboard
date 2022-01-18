@@ -1,4 +1,4 @@
-import React,{ useState , useContext} from 'react';
+import React,{ useState , useContext,useEffect} from 'react';
 import { BASE_URL } from '../axiosConfig';
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
@@ -19,9 +19,17 @@ export default function Login({isLoggedin,setLoggedin}) {
     const [message, setMessage] = useState('')
     const {state,dispatch}=useContext(Context)
     const {name}=state.name;
+    const accessToken =  state.accessToken
     console.log(state.name,"my name");
     const navigate = useNavigate()
     console.log(name);
+    useEffect(()=>{
+      const dataused=JSON.parse(localStorage.getItem('user_data'))
+      dispatch({
+          type:"UPDATE_USER",
+          accessToken:dataused
+      })
+    },[])
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
@@ -31,9 +39,10 @@ export default function Login({isLoggedin,setLoggedin}) {
                 let data = response.data;
                 // response.status ? setLoggedin(true) : setLoggedin(false);
                 localStorage.setItem("user_data", JSON.stringify(data));
-                response.data.status===true ? setLoggedin(true) : setLoggedin(false);
+                response.data.status ? setLoggedin(true) : setLoggedin(false);
                 navigate.push('/Dashboard')
                 console.log(data.status);
+               
             })
             .catch((error) => {
                 console.log(error.response.status)
@@ -43,7 +52,7 @@ export default function Login({isLoggedin,setLoggedin}) {
             })
 
     }
-    // console.log();
+    console.log(accessToken);
     return (
         <>
             <MainContainer>
