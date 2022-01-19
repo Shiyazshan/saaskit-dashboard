@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState,useContext,useEffect } from "react";
+import { Link,Outlet } from "react-router-dom";
 import styled from "styled-components";
 import Dashboard from "../../assets/images/icon/dashboard.png";
 import Tasks from "../../assets/images/icon/tasks.png";
@@ -18,18 +18,46 @@ import ActiveEmail from "../../assets/images/icon/email-active.png";
 import ActiveDeals from "../../assets/images/icon/deals-active.png";
 import ActiveSettingsImg from "../../assets/images/icon/settings-active.png";
 import ActiveToggle from "../../assets/images/icon/toggle-active.png";
+import { Context } from '../../context/Store';
 
-export default function Sidebar({ active, setActive }) {
+
+export default function Sidebar() {
   const [menudata, setMenudata] = useState("");
+  const {state, dispatch}= useContext(Context);
+console.log('===============state===================');
+  console.log(state);
+  console.log('==================================');
+
+
+// useEffect(()=>{
+//   const dataused=JSON.parse(localStorage.getItem('user_data'));
+//   const access= dataused.data.access;
+//   dispatch({
+//           type:"UPDATE_USER",
+//           payload:{
+//             ...state.userdata,
+//             accessToken: access
+//           }
+//       })
+// },[]);
+
   const logout = (e) => {
     localStorage.clear();
   };
+  const active= state.active;
+const HoverActive = (bool)=>{
+      dispatch({
+        type:"SET_ACTIVE",
+            active: bool
+    })
+      console.log(state);
+}
   return (
     <>
       <Container>
         <Aside
-          onMouseOver={() => setActive(true)}
-          onMouseOut={() => setActive(false)}
+          onMouseOver={()=>HoverActive(true)}
+          onMouseOut={() => HoverActive(false)}
           active={active}
         >
           <TopSection>
@@ -48,7 +76,6 @@ export default function Sidebar({ active, setActive }) {
             <Ul>
               <nav>
                 <List to="/" onClick={() => setMenudata("dashboard")}>
-                  {/* <Link to='/'> */}
                   <ImageContainer>
                     {menudata === "dashboard" ? (
                       <ActiveImage src={ActiveDashboard} alt="Image" />
@@ -59,7 +86,6 @@ export default function Sidebar({ active, setActive }) {
                   <ItemName className={menudata === "dashboard" && "active"}>
                     Dashboard
                   </ItemName>
-                  {/* </Link> */}
                 </List>
                 <List to="/task" onClick={() => setMenudata("task")}>
                   <ImageContainer active={active}>
@@ -135,7 +161,6 @@ export default function Sidebar({ active, setActive }) {
                 </ToggleImageContainer>
                 <ToggleText
                   className={menudata === "toggle" && "active"}
-                  onClick={() => setActive((prev) => !prev)}
                 >
                   Toggle Sidebar
                 </ToggleText>
@@ -157,6 +182,7 @@ export default function Sidebar({ active, setActive }) {
           </BellImageContainer>
         </TopBar>
       </Container>
+      <Outlet />
     </>
   );
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useContext,useEffect} from 'react'
 import styled from 'styled-components'
 import {
     Routes,
@@ -7,8 +7,11 @@ import {
 import Contact from '../Contact';
 import Dashboard from '../Dashboard';
 import Task from '../Task';
+import { Context } from '../../context/Store';
 
 function Roterapp({active, setActive}) {
+    const {state,dispatch}=useContext(Context)
+
     return (
         <Cover active={active}>
             <Routes>

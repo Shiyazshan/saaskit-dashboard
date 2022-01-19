@@ -3,7 +3,7 @@ import { BASE_URL } from '../axiosConfig';
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import styled from 'styled-components';
-import { Context } from '../context/store';
+import { Context } from '../context/Store';
 
 import '../App.css';
 import Bgimage from '../assets/images/Bg.jpg'
@@ -18,41 +18,43 @@ export default function Login({isLoggedin,setLoggedin}) {
     const [password, setPassword] = useState('')
     const [message, setMessage] = useState('')
     const {state,dispatch}=useContext(Context)
-    const {name}=state.name;
-    const accessToken =  state.accessToken
-    console.log(state.name,"my name");
+    const {name} = state.userdata.name;
+    const accessToken =  state.accessToken;
+
+    console.log(state.userdata,"my name");
+
     const navigate = useNavigate()
     console.log(name);
-    useEffect(()=>{
-      const dataused=JSON.parse(localStorage.getItem('user_data'))
-      dispatch({
-          type:"UPDATE_USER",
-          accessToken:dataused
-      })
-    },[])
+
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
             .post(`${BASE_URL}`,{ username, password })
             .then((response) =>{
-                console.log(response.data.status)
-                let data = response.data;
-                // response.status ? setLoggedin(true) : setLoggedin(false);
-                localStorage.setItem("user_data", JSON.stringify(data));
-                response.data.status ? setLoggedin(true) : setLoggedin(false);
+
+                let {data, status} = response.data;
+                // response.data.status ? setLoggedin(true) : setLoggedin(false);
+
+                dispatch({
+                    type:"UPDATE_USER",
+                    payload: {
+                        accessToken: data.access,
+                        isVerified: true 
+                    }
+                })
                 navigate.push('/Dashboard')
-                console.log(data.status);
+                console.log(status);
                
             })
             .catch((error) => {
-                console.log(error.response.status)
-                if (error.response.status === 401) {
-                    setMessage('account is not valid')
-                }
+                // console.log(error.response.status)
+                // if (error.response.status === 401) {
+                //     setMessage('account is not valid')
+                // }
             })
 
     }
-    console.log(accessToken);
+
     return (
         <>
             <MainContainer>

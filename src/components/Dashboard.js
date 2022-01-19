@@ -1,17 +1,18 @@
-import React,{useState} from 'react'
-import { Chart } from 'chart.js'
+import React from 'react'
 import styled from 'styled-components'
 import George from '../assets/images/george.png'
 import Rebecca from '../assets/images/rebecca.png'
 import Lindsey from '../assets/images/lindsey.png'
-import Sidebar from '../components/includes/Sidebar'
 import Arrow from '../assets/images/Polygon.png'
 import Round from '../assets/images/round.png'
 import Round1 from '../assets/images/round2.png'
 import Delete from '../assets/images/delete.png'
 import Edit from '../assets/images/edit.png'
-import LineChart from './LineChart'
-export default function Dashboard({active, setActive}) {
+import Doughnut from './Doughnuts'
+
+
+ const Dashboard=({active, setActive})=> {
+  
     
     return (
         <>
@@ -212,7 +213,7 @@ export default function Dashboard({active, setActive}) {
                             <ChartTop>
                                 <CTop>Task</CTop>
                                 <CSmall>Show: </CSmall>
-                                {/* <LineChart/> */}
+                                <Doughnut/>
                             </ChartTop>
                             
                         </PieChart1>
@@ -224,7 +225,7 @@ export default function Dashboard({active, setActive}) {
         </>
     )
 }
-
+export default Dashboard
 const DashboardI = styled.div`
     transition:.4s ease;
   
