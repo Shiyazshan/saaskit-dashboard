@@ -11,10 +11,13 @@ body{
   background: #E5E5E5;
 }
 .globalstyle {
-  /* margin-left: 328px; */
   margin-left: 100px;
   z-index: -2;
   margin-top: 100px;
+  /* width: ${(active) => (active ? "71%" : "100%")}; */
+}
+.globalstyle.active{
+  background: red;
 }
 .labelled{
   background: #109CF1;

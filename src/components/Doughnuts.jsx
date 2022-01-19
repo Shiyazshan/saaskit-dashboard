@@ -1,5 +1,5 @@
 import React,{useState,useEffect,useContext} from 'react'
-import { Line ,Doughnut} from "react-chartjs-2";
+import { Doughnut } from "react-chartjs-2";
 import { Context } from '../context/Store';
 import axios from 'axios'
 import { Chart, registerables, ArcElement } from "chart.js";
@@ -23,49 +23,52 @@ const Doughnuts = () => {
       })
     },[])
     const data = {
-        labels: ['attended','completed','ended',],
+        labels: ['active','completed','ended',],
         datasets: [
             {
-                label: 'attended',
+                label: 'example',
                 data: [datadough.active,datadough.completed,datadough.ended],
                 borderColor: ['rgba(255,206,86,0.2)'],
-                backgroundColor: ['rgba(232,99,132,1)',
-                'rgba(232,211,6,1)',
-                'rgba(54,162,235,1)',
-                'rgba(153,102,255,1)' ],
-                pointBackgroundColor: 'rgba(255,206,86,0.2)',
+                cutout:200,
+                backgroundColor: ['rgb(46, 212, 117)',
+                'rgb(255, 185, 70)',
+                'rgb(247, 104, 91)', ],
+                legend: {
+                    display: false
+                }
             }
-    
         ]
     }
+
     const options = {
+       
         plugins: {
+           
             title: {
                 display: true,
-                text: 'Doughnut Chart',
+                text: '60%',
                 color:'blue',
                 font: {
-                    size:34
+                    size:44
                 },
                 padding:{
-                    top:30,
+                    top:50,
                     bottom:30
                 },
+                
+                
                 responsive:true,
                 animation:{
                     animateScale: true,
                                }
-            }
+            },
         }
-    
     }
     console.log(datadough);
     return (
         <Container>
-            al doughnuts
             <Doughnut
                 data={data}
-                // datasets
                 options={{
                 responsive: true,
                 maintainAspectRatio: true,

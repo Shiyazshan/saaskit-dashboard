@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import George from '../assets/images/george.png'
 import Rebecca from '../assets/images/rebecca.png'
@@ -9,14 +9,17 @@ import Round1 from '../assets/images/round2.png'
 import Delete from '../assets/images/delete.png'
 import Edit from '../assets/images/edit.png'
 import Doughnut from './Doughnuts'
+import { Context } from '../context/Store'
 
 
- const Dashboard=({active, setActive})=> {
-  
-    
+
+ const Dashboard=()=> {
+    const {state}=useContext(Context)
+    const active=state.active
+    console.log(active,'active from dashboard');
     return (
         <>
-            <DashboardI active={active} className='globalstyle'>
+            <DashboardI active={active} >
                 <AllItems>
                     <Dleft>
                         <TaskOverview>
@@ -215,6 +218,9 @@ import Doughnut from './Doughnuts'
                                 <CSmall>Show: </CSmall>
                                 <Doughnut/>
                             </ChartTop>
+                            {/* <ChartBottom>
+
+                            </ChartBottom> */}
                             
                         </PieChart1>
                     </Dright>
@@ -226,8 +232,14 @@ import Doughnut from './Doughnuts'
     )
 }
 export default Dashboard
+
 const DashboardI = styled.div`
     transition:.4s ease;
+    /* margin-left: 100px; */
+    margin-left: ${({active})=>active ? '328px' : '100px'};
+    z-index: -2;
+    margin-top: 100px;
+
   
 `;
 const Dleft = styled.div`

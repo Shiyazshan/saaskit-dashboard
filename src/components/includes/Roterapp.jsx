@@ -9,14 +9,15 @@ import Dashboard from '../Dashboard';
 import Task from '../Task';
 import { Context } from '../../context/Store';
 
-function Roterapp({active, setActive}) {
+function Roterapp() {
     const {state,dispatch}=useContext(Context)
 
+    const {active} = state.active
     return (
         <Cover active={active}>
             <Routes>
-                <Route path='/' element={<Dashboard active={active} setActive={setActive} />}/>
-                <Route path='/contact/' element={<Contact active={active} setActive={setActive} />}/>
+                <Route path='/' element={<Dashboard />}/>
+                <Route path='/contact/' element={<Contact />}/>
                 <Route path='/task/' element={<Task/>}/>
             </Routes>
         </Cover>
