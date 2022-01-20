@@ -8,6 +8,7 @@ import Contact from '../Contact';
 import Dashboard from '../Dashboard';
 import Task from '../Task';
 import { Context } from '../../context/Store';
+import Chat from '../Chat';
 
 function Roterapp() {
     const {state,dispatch}=useContext(Context)
@@ -19,6 +20,7 @@ function Roterapp() {
                 <Route path='/' element={<Dashboard />}/>
                 <Route path='/contact/' element={<Contact />}/>
                 <Route path='/task/' element={<Task/>}/>
+                <Route path='/chat/' element={<Chat/>}/>
             </Routes>
         </Cover>
     )

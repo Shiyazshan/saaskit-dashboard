@@ -23,7 +23,7 @@ const Doughnuts = () => {
       })
     },[])
     const data = {
-        labels: ['active','completed','ended',],
+        labels: ['active','completed','ended'],
         datasets: [
             {
                 label: 'example',
@@ -33,9 +33,6 @@ const Doughnuts = () => {
                 backgroundColor: ['rgb(46, 212, 117)',
                 'rgb(255, 185, 70)',
                 'rgb(247, 104, 91)', ],
-                legend: {
-                    display: false
-                }
             }
         ]
     }

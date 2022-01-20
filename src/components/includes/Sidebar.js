@@ -5,6 +5,7 @@ import Dashboard from "../../assets/images/icon/dashboard.png";
 import Tasks from "../../assets/images/icon/tasks.png";
 import Email from "../../assets/images/icon/email.png";
 import Contacts from "../../assets/images/icon/contacts.png";
+import Chat from "../../assets/images/icon/chat.png";
 import Deals from "../../assets/images/icon/deals.png";
 import SettingsImg from "../../assets/images/icon/settings.png";
 import Profileimg from "../../assets/images/image 2.png";
@@ -13,6 +14,7 @@ import Bell from "../../assets/images/icon/notifications.png";
 import Search from "../../assets/images/icon/Vector.png";
 import ActiveDashboard from "../../assets/images/icon/dashboard-active.png";
 import ActiveContacts from "../../assets/images/icon/contacts-active.png";
+import ActiveChat from "../../assets/images/icon/chat-active.png";
 import ActiveTasks from "../../assets/images/icon/tasks-active.png";
 import ActiveEmail from "../../assets/images/icon/email-active.png";
 import ActiveDeals from "../../assets/images/icon/deals-active.png";
@@ -123,6 +125,20 @@ const HoverActive = (bool)=>{
                     Contacts
                   </ItemName>
                 </List>
+
+                <List to="/chat" onClick={() => setMenudata("chat")}>
+                  <ImageContainer>
+                    {menudata === "chat" ? (
+                      <ActiveImage src={ActiveChat} alt="Image" />
+                    ) : (
+                      <Image src={Chat} alt="Image" />
+                    )}
+                  </ImageContainer>
+                  <ItemName className={menudata === "chat" && "active"}>
+                    Chat
+                  </ItemName>
+                </List>
+
                 <List to="/" onClick={() => setMenudata("deals")}>
                   <ImageContainer>
                     {menudata === "deals" ? (
