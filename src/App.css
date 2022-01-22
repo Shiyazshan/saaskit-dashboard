@@ -14,7 +14,6 @@ body{
   margin-left: 100px;
   z-index: -2;
   margin-top: 100px;
-  /* width: ${(active) => (active ? "71%" : "100%")}; */
 }
 .globalstyle.active{
   background: red;
@@ -25,33 +24,38 @@ body{
   border-radius: 50%;
   padding: 3px;
 }
-.lindsey{
-
+.rebecca h3{
+  margin: 0;
 }
-.nicci {
-
+.rebecca h4{
+  margin-left: 5px;
+  color: #90A0B7;
+  font-family: 'Poppins';
+  font-weight: 400;
 }
-.wordpress{
-
+.bgnone{
+  margin-left: 161px;
+  text-align: left;
 }
-.rebecca{
-
+.bgnone .message{
+  width: 84%;
+  margin-left: 39px;
+  background: #fff;
+  color: #334D6E;
+  border: 1px solid #E4E9EE;
 }
-.jane{
-
+.bgnone .info{
+  justify-content: flex-end;
 }
-.jones{
-
+.jones h4{
+  font-family: 'Poppins';
+  font-size: 13px;
+  color:#90A0B7;
+  font-weight: 400;
+  margin-left: 34px;
 }
-.martin{
+.form input::placeholder{
+  color:#b3b3b3;
+  font-family: 'Poppins';
 
-}
-.franz{
-
-}
-.judith{
-
-}
-.john{
-
-}
+} 

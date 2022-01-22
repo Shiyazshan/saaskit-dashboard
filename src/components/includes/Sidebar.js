@@ -1,5 +1,5 @@
-import React, { useState,useContext,useEffect } from "react";
-import { Link,Outlet } from "react-router-dom";
+import React, { useState, useContext, useEffect } from "react";
+import { Link, Outlet } from "react-router-dom";
 import styled from "styled-components";
 import Dashboard from "../../assets/images/icon/dashboard.png";
 import Tasks from "../../assets/images/icon/tasks.png";
@@ -20,45 +20,43 @@ import ActiveEmail from "../../assets/images/icon/email-active.png";
 import ActiveDeals from "../../assets/images/icon/deals-active.png";
 import ActiveSettingsImg from "../../assets/images/icon/settings-active.png";
 import ActiveToggle from "../../assets/images/icon/toggle-active.png";
-import { Context } from '../../context/Store';
-
+import { Context } from "../../context/Store";
 
 export default function Sidebar() {
   const [menudata, setMenudata] = useState("");
-  const {state, dispatch}= useContext(Context);
-console.log('===============state===================');
+  const { state, dispatch } = useContext(Context);
+  console.log("===============state===================");
   console.log(state);
-  console.log('==================================');
+  console.log("==================================");
 
-
-// useEffect(()=>{
-//   const dataused=JSON.parse(localStorage.getItem('user_data'));
-//   const access= dataused.data.access;
-//   dispatch({
-//           type:"UPDATE_USER",
-//           payload:{
-//             ...state.userdata,
-//             accessToken: access
-//           }
-//       })
-// },[]);
+  // useEffect(()=>{
+  //   const dataused=JSON.parse(localStorage.getItem('user_data'));
+  //   const access= dataused.data.access;
+  //   dispatch({
+  //           type:"UPDATE_USER",
+  //           payload:{
+  //             ...state.userdata,
+  //             accessToken: access
+  //           }
+  //       })
+  // },[]);
 
   const logout = (e) => {
     localStorage.clear();
   };
-  const active= state.active;
-const HoverActive = (bool)=>{
-      dispatch({
-        type:"SET_ACTIVE",
-            active: bool
-    })
-      console.log(state);
-}
+  const active = state.active;
+  const HoverActive = (bool) => {
+    dispatch({
+      type: "SET_ACTIVE",
+      active: bool,
+    });
+    console.log(state);
+  };
   return (
     <>
       <Container>
         <Aside
-          onMouseOver={()=>HoverActive(true)}
+          onMouseOver={() => HoverActive(true)}
           onMouseOut={() => HoverActive(false)}
           active={active}
         >
@@ -175,9 +173,7 @@ const HoverActive = (bool)=>{
                     <ToggleImage src={Toggle} alt="Image" />
                   )}
                 </ToggleImageContainer>
-                <ToggleText
-                  className={menudata === "toggle" && "active"}
-                >
+                <ToggleText className={menudata === "toggle" && "active"}>
                   Toggle Sidebar
                 </ToggleText>
               </ToggleBar>
@@ -191,11 +187,14 @@ const HoverActive = (bool)=>{
               name="search"
               placeholder="Global Search"
             />
+            <TopRight>
             <Logout onClick={logout}>Logout</Logout>
+            <BellImageContainer>
+              <BellImage src={Bell} alt="Image" />
+            </BellImageContainer>
+          </TopRight>
           </TopBarForm>
-          <BellImageContainer>
-            <BellImage src={Bell} alt="Image" />
-          </BellImageContainer>
+          
         </TopBar>
       </Container>
       <Outlet />
@@ -339,7 +338,7 @@ const TopBarForm = styled.form`
 `;
 const InputSearch = styled.input`
   padding: 12px 44px;
-  width: 100%;
+  width: 70%;
   background: url(${Search}) no-repeat;
   background-position: center left 22px;
   margin-left: 20px;
@@ -347,6 +346,11 @@ const InputSearch = styled.input`
   &::placeholder {
     color: #90a0b7;
   }
+`;
+const TopRight = styled.div`
+  display: flex;
+  position: fixed;
+  right: 0;
 `;
 const Logout = styled.button`
   background: #f7685b;
@@ -356,6 +360,7 @@ const Logout = styled.button`
   border: none;
   font-size: 12px;
   font-family: "Poppins";
+  margin-right: 10px;
   cursor: pointer;
 `;
 const BellImageContainer = styled.div`
