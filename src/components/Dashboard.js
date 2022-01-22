@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Context } from "../context/Store";
+import { Context } from "./context/Store";
 import Doughnut from "./Doughnuts";
 import styled from "styled-components";
 

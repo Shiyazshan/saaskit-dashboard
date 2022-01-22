@@ -7,7 +7,7 @@ import {
 import Contact from '../Contact';
 import Dashboard from '../Dashboard';
 import Task from '../Task';
-import { Context } from '../../context/Store';
+import { Context } from '../context/Store';
 import Chat from '../Chat';
 
 function Roterapp() {

@@ -20,7 +20,7 @@ import ActiveEmail from "../../assets/images/icon/email-active.png";
 import ActiveDeals from "../../assets/images/icon/deals-active.png";
 import ActiveSettingsImg from "../../assets/images/icon/settings-active.png";
 import ActiveToggle from "../../assets/images/icon/toggle-active.png";
-import { Context } from "../../context/Store";
+import { Context } from "../context/Store";
 
 export default function Sidebar() {
   const [menudata, setMenudata] = useState("");

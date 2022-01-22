@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Context } from "../../context/Store";
-import { AuthRoute } from "../AuthRoute";
+import { Context } from "../context/Store";
+import { AuthRoute } from "../routers/AuthRoute";
 import Loading from "../Loading";
-import { PrivateRoute } from "../PrivateRoute";
-import AppRouter from "./AppRouter";
-import AuthRouter from "./AuthRouter";
+import { PrivateRoute } from "./PrivateRoute";
+import AppRouter from "../routers/AppRouter";
+import AuthRouter from "../routers/AuthRouter";
 
 export default function MainRouter() {
   const { dispatch } = useContext(Context);

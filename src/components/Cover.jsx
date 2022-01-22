@@ -1,6 +1,6 @@
 import React from 'react'
-import AuthRouter from './includes/AuthRouter'
-import Roterapp from './includes/Roterapp'
+import AuthRouter from './routers/AuthRouter'
+import Roterapp from './routers/Roterapp'
 import Sidebar from './includes/Sidebar'
 
 const Cover = ({active, setActive}) => {

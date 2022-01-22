@@ -1,6 +1,6 @@
 import React,{useState,useEffect,useContext} from 'react'
 import { Doughnut } from "react-chartjs-2";
-import { Context } from '../context/Store';
+import { Context } from './context/Store';
 import axios from 'axios'
 import { Chart, registerables, ArcElement } from "chart.js";
 import styled from 'styled-components'

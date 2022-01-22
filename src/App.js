@@ -2,8 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Login from "./components/Login";
-import Store, { Context } from "../src/context/Store";
-import MainRouter from "./components/includes/MainRouter";
+import Store, { Context } from "./components/context/Store";
+import MainRouter from "./components/routers/MainRouter";
 
 function App() {
   const [active, setActive] = useState(true);

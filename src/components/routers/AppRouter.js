@@ -3,13 +3,13 @@ import {
     Routes,
     Route
   } from "react-router-dom";
-import { Context } from '../../context/Store';
+import { Context } from '../context/Store';
 import Chat from '../Chat';
 import Contact from '../Contact';
 import Cover from '../Cover';
 import Dashboard from '../Dashboard';
 import Task from '../Task';
-import Sidebar from './Sidebar';
+import Sidebar from '../includes/Sidebar';
 
 function AppRouter({active, setActive}) {
     const {state, dispatch}=useContext(Context)

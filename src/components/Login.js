@@ -3,7 +3,7 @@ import { BASE_URL } from '../axiosConfig';
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import styled from 'styled-components';
-import { Context } from '../context/Store';
+import { Context } from './context/Store';
 
 import '../App.css';
 import Bgimage from '../assets/images/Bg.jpg'

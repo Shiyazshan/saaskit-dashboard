@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Context } from "../context/Store";
+import { Context } from "./context/Store";
 import styled from "styled-components";
 import axios from "axios";
 
@@ -179,7 +179,7 @@ const Role = styled.div``;
 const Forecast = styled.div``;
 const Recent = styled.div``;
 const Box = styled.div`
-  width: 114px;
+  width: 120px;
 `;
 const First = styled.div`
   display: flex;

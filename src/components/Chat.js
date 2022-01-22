@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Context } from "../context/Store";
+import { Context } from "./context/Store";
 import "../../src/App.css";
 import styled from "styled-components";
 import Lindsey from "../assets/images/lindsey.png";
