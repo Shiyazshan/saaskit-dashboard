@@ -1,6 +1,7 @@
 import React from 'react'
 import ImageLoading from '../assets/images/loading.gif'
 import styled from 'styled-components'
+
 const Loading = () => {
     return (
         <LoaderCover>

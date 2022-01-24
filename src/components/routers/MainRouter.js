@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { Context } from "../context/Store";
 import { AuthRoute } from "../routers/AuthRoute";
-import Loading from "../Loading";
 import { PrivateRoute } from "./PrivateRoute";
+import Loading from "../Loading";
 import AppRouter from "../routers/AppRouter";
 import AuthRouter from "../routers/AuthRouter";
 
@@ -26,16 +26,14 @@ export default function MainRouter() {
         }, 500);
       });
 
-    let result = await promise; 
-
+      let result = await promise;
     };
-    
-    fetchUserData();
 
+    fetchUserData();
   }, []);
 
   return isLoading ? (
-    <Loading/>
+    <Loading />
   ) : (
     <Routes>
       <Route

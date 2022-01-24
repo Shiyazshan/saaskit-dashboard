@@ -1,5 +1,4 @@
 import React from 'react'
-import AuthRouter from './routers/AuthRouter'
 import Roterapp from './routers/Roterapp'
 import Sidebar from './includes/Sidebar'
 

@@ -18,8 +18,7 @@ import Sent from "../assets/images/sent.png";
 import Dot from "../assets/images/Vector.png";
 import ActiveImgDot from "../assets/images/Ellipse.png";
 import ImojIcon from "../assets/images/imoji.png";
-import Attachment from '../assets/images/attachment.png'
-
+import Attachment from "../assets/images/attachment.png";
 
 const Chat = () => {
   const { state } = useContext(Context);
@@ -266,10 +265,10 @@ const Chat = () => {
               <ChatBottom>
                 <ChatForm className="form">
                   <InputSearch type="search" placeholder="Type a message..." />
-                </ChatForm >
+                </ChatForm>
                 <Attachments>
-                    <Imoji src={ImojIcon} alt="Image" />
-                    <Attach src={Attachment} alt="Image" />
+                  <Imoji src={ImojIcon} alt="Image" />
+                  <Attach src={Attachment} alt="Image" />
                 </Attachments>
               </ChatBottom>
             </ChatContainer>
@@ -408,8 +407,8 @@ const ChatItems = styled.div`
 const ChatItem = styled.div`
   text-align: left;
   margin-top: 40px;
-  &:last-child{
-      margin-bottom: 20px;
+  &:last-child {
+    margin-bottom: 20px;
   }
 `;
 const UserInfo = styled.div`
@@ -455,13 +454,13 @@ const Status = styled.h4`
 `;
 
 const ChatBottom = styled.div`
-    display: flex;
-    padding: 8px;
-    border-top: 1px solid #EBEFF2;
-    align-items: center;
+  display: flex;
+  padding: 8px;
+  border-top: 1px solid #ebeff2;
+  align-items: center;
 `;
 const ChatForm = styled.form`
-    width: 94%;
+  width: 94%;
 `;
 const InputSearch = styled.input`
     border: none;
@@ -473,7 +472,6 @@ const InputSearch = styled.input`
 `;
 const Attachments = styled.div``;
 const Imoji = styled.img`
-    margin-right:15px;
+  margin-right: 15px;
 `;
 const Attach = styled.img``;
-

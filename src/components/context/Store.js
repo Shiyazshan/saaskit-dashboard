@@ -4,7 +4,7 @@ import Reducer from './Reducer'
 const initialState = {
     active:false,
     userdata:{
-        name:"shiyaskhan",
+        name: '',
         isVerified: false,
         accessToken:'',
     },

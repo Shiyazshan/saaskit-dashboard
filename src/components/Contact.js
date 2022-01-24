@@ -71,26 +71,31 @@ export default function Contact() {
         <Ul>
           <Li>
             <Form>
-              <Input className="input" type="checkbox" id="select" name="select" />
+              <Input
+                className="input"
+                type="checkbox"
+                id="select"
+                name="select"
+              />
               <Box>
                 <Text>Name</Text>
-            </Box>
+              </Box>
             </Form>
-            
+
             <Box>
-                <Text>Email</Text>
+              <Text>Email</Text>
             </Box>
             <Box>
-                <Text>Company name</Text>
+              <Text>Company name</Text>
             </Box>
             <Box>
-                <Text>Role</Text>
+              <Text>Role</Text>
             </Box>
             <Box>
-                <Text>Forecast</Text>
+              <Text>Forecast</Text>
             </Box>
             <Box>
-                <Text>Recent activity</Text>
+              <Text>Recent activity</Text>
             </Box>
           </Li>
         </Ul>
@@ -111,7 +116,7 @@ const FirstRow = styled.div`
   justify-content: space-between;
   margin-left: 10px;
   margin-bottom: 15px;
-  padding-top: 100px;
+  padding-top: 30px;
 `;
 const Div = styled.div`
   width: 100%;
@@ -184,7 +189,4 @@ const Box = styled.div`
 const First = styled.div`
   display: flex;
 `;
-const Text = styled.h4`
-
-`;
-
+const Text = styled.h4``;

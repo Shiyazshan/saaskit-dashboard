@@ -1,5 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { Context } from "../context/Store";
+
 import styled from "styled-components";
 import Dashboard from "../../assets/images/icon/dashboard.png";
 import Tasks from "../../assets/images/icon/tasks.png";
@@ -20,26 +22,10 @@ import ActiveEmail from "../../assets/images/icon/email-active.png";
 import ActiveDeals from "../../assets/images/icon/deals-active.png";
 import ActiveSettingsImg from "../../assets/images/icon/settings-active.png";
 import ActiveToggle from "../../assets/images/icon/toggle-active.png";
-import { Context } from "../context/Store";
 
 export default function Sidebar() {
   const [menudata, setMenudata] = useState("");
   const { state, dispatch } = useContext(Context);
-  console.log("===============state===================");
-  console.log(state);
-  console.log("==================================");
-
-  // useEffect(()=>{
-  //   const dataused=JSON.parse(localStorage.getItem('user_data'));
-  //   const access= dataused.data.access;
-  //   dispatch({
-  //           type:"UPDATE_USER",
-  //           payload:{
-  //             ...state.userdata,
-  //             accessToken: access
-  //           }
-  //       })
-  // },[]);
 
   const logout = (e) => {
     localStorage.clear();
@@ -188,13 +174,12 @@ export default function Sidebar() {
               placeholder="Global Search"
             />
             <TopRight>
-            <Logout onClick={logout}>Logout</Logout>
-            <BellImageContainer>
-              <BellImage src={Bell} alt="Image" />
-            </BellImageContainer>
-          </TopRight>
+              <Logout onClick={logout}>Logout</Logout>
+              <BellImageContainer>
+                <BellImage src={Bell} alt="Image" />
+              </BellImageContainer>
+            </TopRight>
           </TopBarForm>
-          
         </TopBar>
       </Container>
       <Outlet />
@@ -331,6 +316,7 @@ const TopBar = styled.div`
   background: #fff;
   padding-left: ${({ active }) => (active ? "259px" : "63px")};
   transition: 0.4s ease;
+  z-index: 5;
 `;
 const TopBarForm = styled.form`
   width: 94%;

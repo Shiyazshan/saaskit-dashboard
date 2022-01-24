@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { Context } from "./context/Store";
 import Doughnut from "./Doughnuts";
 import styled from "styled-components";
-
 import George from "../assets/images/george.png";
 import Rebecca from "../assets/images/rebecca.png";
 import Lindsey from "../assets/images/lindsey.png";
@@ -11,6 +10,7 @@ import Round from "../assets/images/round.png";
 import Round1 from "../assets/images/round2.png";
 import Delete from "../assets/images/delete.png";
 import Edit from "../assets/images/edit.png";
+import ChartArea from "./ChartArea";
 
 const Dashboard = () => {
   const { state } = useContext(Context);
@@ -138,26 +138,28 @@ const Dashboard = () => {
             </Projects>
             <Showmore>Show more</Showmore>
           </Dleft>
-          <Dright>
-            <Graph>
+          <Dright active={active}>
+            <Graph active={active}>
               <Topbar>
                 <Tleft>Deals</Tleft>
                 <TRight>
-                  <TSmall>
-                    Show:<B2>Monthly</B2>
-                  </TSmall>
+                  <Cright>
+                    <TSmall>Show:</TSmall>
+                    <B2>Monthly</B2>
+                  </Cright>
                 </TRight>
               </Topbar>
+              <ChartArea />
             </Graph>
-            <PieChart1>
+            <PieChart1 active={active}>
               <ChartTop>
-                <CTop>Task</CTop>
-                <CSmall>Show: </CSmall>
-                <Doughnut />
+                <CTop>Tasks</CTop>
+                <Cright>
+                  <CSmall>Show:</CSmall>
+                  <B3>This month</B3>
+                </Cright>
               </ChartTop>
-              {/* <ChartBottom>
-
-                            </ChartBottom> */}
+              <Doughnut />
             </PieChart1>
           </Dright>
         </AllItems>
@@ -169,8 +171,8 @@ export default Dashboard;
 
 const DashboardI = styled.div`
   transition: 0.4s ease;
-  /* margin-left: 100px; */
   margin-left: ${({ active }) => (active ? "328px" : "100px")};
+
   z-index: -2;
   margin-top: 100px;
 `;
@@ -311,7 +313,11 @@ const PButton1 = styled.a`
   font-family: "Poppins";
   cursor: pointer;
 `;
-const B2 = styled.b``;
+const B2 = styled.h5`
+  color: #109cf1;
+  margin: 0;
+  margin-left: 5px;
+`;
 
 const DateC = styled.h3`
   font-weight: 400;
@@ -379,13 +385,55 @@ const Showmore = styled.h3`
   font-family: "Poppins";
   font-size: 13px;
 `;
-const Dright = styled.div``;
-const Graph = styled.div``;
-const Topbar = styled.div``;
-const Tleft = styled.div``;
+const Dright = styled.div`
+  margin-left: 30px;
+  /* background-color: #fff; */
+  transition: 0.4s ease;
+`;
+const Graph = styled.div`
+  height: 400px;
+  width: ${({ active }) => (active ? "530px" : "721px")};
+  transition: 0.4s ease;
+  background: #fff;
+`;
+const Topbar = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 20px;
+`;
+const Tleft = styled.div`
+  font-family: "Poppins";
+  font-weight: 600;
+`;
 const TRight = styled.div``;
-const TSmall = styled.div``;
-const PieChart1 = styled.div``;
-const ChartTop = styled.div``;
-const CTop = styled.div``;
-const CSmall = styled.div``;
+const TSmall = styled.div`
+  font-size: 13px;
+`;
+const PieChart1 = styled.div`
+  margin-top: 20px;
+  padding: 20px;
+  background: #fff;
+  width: ${({ active }) => (active ? "490px" : "684px")};
+  transition: 0.4s ease;
+`;
+const ChartTop = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+const CTop = styled.div`
+  font-family: "Poppins";
+  font-weight: 600;
+`;
+const CSmall = styled.div`
+  font-size: 13px;
+`;
+const B3 = styled.h5`
+  color: #109cf1;
+  margin: 0;
+  margin-left: 5px;
+`;
+const Cright = styled.div`
+  display: flex;
+  align-items: center;
+`;
