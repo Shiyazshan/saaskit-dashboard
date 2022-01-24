@@ -329,6 +329,7 @@ const InputSearch = styled.input`
   background-position: center left 22px;
   margin-left: 20px;
   border: none;
+  border-style: #fff;
   &::placeholder {
     color: #90a0b7;
   }

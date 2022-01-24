@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Context } from "./context/Store";
 import "../../src/App.css";
 import styled from "styled-components";
@@ -23,173 +23,132 @@ import Attachment from "../assets/images/attachment.png";
 const Chat = () => {
   const { state } = useContext(Context);
   const active = state.active;
+  const userData = [
+    {
+      id: 1,
+      name: "Lindsey",
+      profile: Lindsey,
+      message: "Your idea for this application is nice! ",
+      date: "30 Dec 2018, 12:34",
+      status: "1",
+    },
+    {
+      id: 2,
+      name: "Nicci Troiani",
+      profile: Nicci,
+      message: "Nicci is typing a message...",
+      date: "30 Dec 2018, 11:12",
+      status: "2",
+    },
+    {
+      id: 3,
+      name: "WordPress conferesion",
+      profile: Word,
+      message: "You : Sure!",
+      date: "29 Dec 2018, 18:05",
+      status: "3",
+    },
+    {
+      id: 4,
+      name: "Rebecca Moore",
+      profile: Rebecca,
+      message: "I’m not sure about this..",
+      date: "29 Dec 2018, 18:05",
+      status: "4",
+    },
+    {
+      id: 5,
+      name: "Jane Doe",
+      profile: Jane,
+      message: "It should be pretty simple.",
+      date: "29 Dec 2018, 16:45",
+      status: "5",
+    },
+    {
+      id: 6,
+      name: "Jones Dermot",
+      profile: Jones,
+      message: "I have a new feature for this project.",
+      date: "29 Dec 2018, 13:37",
+      status: "6",
+    },
+    {
+      id: 7,
+      name: "Martin Merces",
+      profile: Martin,
+      message: "Martin is typing a message...",
+      date: "29 Dec 2018, 12:48",
+      status: "6",
+    },
+    {
+      id: 8,
+      name: "Franz Ferdinand",
+      profile: Franz,
+      message: "Can we schedule an online meeting? Thanks! ",
+      date: "28 Dec 2018, 15:27",
+      status: "6",
+    },
+    {
+      id: 9,
+      name: "Judith Williams",
+      profile: Judith,
+      message: "Thank you. See you later!",
+      date: "28 Dec 2018, 13:19",
+      status: "6",
+    },
+    {
+      id: 10,
+      name: "John Smith",
+      profile: John,
+      message: "It’s fine",
+      date: "27 Dec 2018, 21:22",
+      status: "6",
+    },
+  ];
+  const [activa, setActiva] = useState("");
   return (
     <>
       <Container active={active}>
         <Items>
           <ItemLeft>
-            <Ul>
-              <Li>
+            {userData.map((item) => (
+              <Li
+                className={activa === item.id ? "active" : "top"}
+                onClick={() => setActiva(item.id)}
+              >
                 <SectionTop>
                   <SectionLeft>
-                    <ImageContainer>
-                      <UserImage src={Lindsey} alt="Image" />
+                    <ImageContainer className={activa===item.id && 'border'}>
+                      <UserImage src={item.profile} alt="Image" />
                     </ImageContainer>
-                    <Name>Lindsey Stroud</Name>
+                    <Name className={activa===item.id && 'active'} activa={activa} >{item.name}</Name>
                   </SectionLeft>
-                  <Date>30 Dec 2018, 12:34</Date>
+                  <Date>{item.date}</Date>
                 </SectionTop>
                 <SectionBottom>
-                  <Message>Your idea for this application is nice!</Message>
-                  <Counter>1</Counter>
+                  <Message>{item.message}</Message>
+                  <Counter status={item.status}>
+                    {item.status === "1" ? (
+                      "1"
+                    ) : item.status === "2" ? (
+                      "2"
+                    ) : item.status === "3" ? (
+                      <img src={Green} alt="" />
+                    ) : item.status === "4" ? (
+                      <img src={Error} alt="image" />
+                    ) : item.status === "5" ? (
+                      <img src={Sent} alt="image" />
+                    ) : ''
+                      
+                    }
+                  </Counter>
                 </SectionBottom>
               </Li>
-
-              <Li>
-                <SectionTop>
-                  <SectionLeft>
-                    <ImageContainer>
-                      <UserImage src={Nicci} alt="Image" />
-                    </ImageContainer>
-                    <Name>Nicci Troiani</Name>
-                  </SectionLeft>
-                  <Date>30 Dec 2018, 11:12</Date>
-                </SectionTop>
-                <SectionBottom>
-                  <Message>Nicci is typing a message</Message>
-                  <Counter>2</Counter>
-                </SectionBottom>
-              </Li>
-
-              <Li className="rebecca">
-                <SectionTop>
-                  <SectionLeft>
-                    <ImageContainer>
-                      <UserImage src={Word} alt="Image" />
-                    </ImageContainer>
-                    <Name>WordPress conferesion</Name>
-                  </SectionLeft>
-                  <Date>29 Dec 2018, 18:05</Date>
-                </SectionTop>
-                <SectionBottom>
-                  <InnerMessage>
-                    You:<Message>Sure!</Message>
-                  </InnerMessage>
-                  <WordpressImage src={Green} alt="image" />
-                </SectionBottom>
-              </Li>
-
-              <Li className="rebecca">
-                <SectionTop>
-                  <SectionLeft>
-                    <ImageContainer>
-                      <UserImage src={Rebecca} alt="Image" />
-                    </ImageContainer>
-                    <Name>Rebecca Moore</Name>
-                  </SectionLeft>
-                  <Date>29 Dec 2018, 18:05</Date>
-                </SectionTop>
-                <SectionBottom>
-                  <InnerMessage>
-                    You:<Message>Sure!</Message>
-                  </InnerMessage>
-                  <WordpressImage src={Error} alt="image" />
-                </SectionBottom>
-              </Li>
-              <Li className="rebecca">
-                <SectionTop>
-                  <SectionLeft>
-                    <ImageContainer>
-                      <UserImage src={Jane} alt="Image" />
-                    </ImageContainer>
-                    <Name>Jane Doe</Name>
-                  </SectionLeft>
-                  <Date>29 Dec 2018, 16:45</Date>
-                </SectionTop>
-                <SectionBottom>
-                  <InnerMessage>
-                    You:<Message>Sure!</Message>
-                  </InnerMessage>
-                  <WordpressImage src={Sent} alt="image" />
-                </SectionBottom>
-              </Li>
-
-              <Li className="jones">
-                <SectionTop>
-                  <SectionLeft>
-                    <ImageContainer>
-                      <UserImage src={Jones} alt="Image" />
-                    </ImageContainer>
-                    <Name>Jones Dermot</Name>
-                  </SectionLeft>
-
-                  <Date>29 Dec 2018, 13:37</Date>
-                </SectionTop>
-                <SectionBottom>
-                  <Text>I have a new feature for this project.</Text>
-                </SectionBottom>
-              </Li>
-
-              <Li className="jones">
-                <SectionTop>
-                  <SectionLeft>
-                    <ImageContainer>
-                      <UserImage src={Martin} alt="Image" />
-                    </ImageContainer>
-                    <Name>Martin Merces</Name>
-                  </SectionLeft>
-                  <Date>29 Dec 2018, 12:48</Date>
-                </SectionTop>
-                <SectionBottom>
-                  <Text>Martin is typing a message...</Text>
-                </SectionBottom>
-              </Li>
-              <Li className="jones">
-                <SectionTop>
-                  <SectionLeft>
-                    <ImageContainer>
-                      <UserImage src={Franz} alt="Image" />
-                    </ImageContainer>
-                    <Name>Franz Ferdinand</Name>
-                  </SectionLeft>
-                  <Date>28 Dec 2018, 15:27</Date>
-                </SectionTop>
-                <SectionBottom>
-                  <Text>Can we schedule an online meeting? Thanks! </Text>
-                </SectionBottom>
-              </Li>
-              <Li className="jones">
-                <SectionTop>
-                  <SectionLeft>
-                    <ImageContainer>
-                      <UserImage src={Judith} alt="Image" />
-                    </ImageContainer>
-                    <Name>Judith Williams</Name>
-                  </SectionLeft>
-                  <Date>28 Dec 2018, 13:19</Date>
-                </SectionTop>
-                <SectionBottom>
-                  <Text>Thank you. See you later!</Text>
-                </SectionBottom>
-              </Li>
-              <Li className="jones">
-                <SectionTop>
-                  <SectionLeft>
-                    <ImageContainer>
-                      <UserImage src={John} alt="Image" />
-                    </ImageContainer>
-                    <Name>John Smith</Name>
-                  </SectionLeft>
-                  <Date>27 Dec 2018, 21:22</Date>
-                </SectionTop>
-                <SectionBottom>
-                  <Text>It’s fine</Text>
-                </SectionBottom>
-              </Li>
-            </Ul>
+            ))}
+            
           </ItemLeft>
           <ItemRight>
-            <ChatContainer>
+            <ChatContainer active={active}>
               <TopBar>
                 <TopRight>
                   <USerImgContainer>
@@ -285,7 +244,6 @@ const ItemRight = styled.div`
 `;
 const Container = styled.div`
   transition: 0.4s ease;
-  width: 75%;
   margin-left: ${({ active }) => (active ? "328px" : "100px")};
   margin-top: 100px;
   box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06);
@@ -299,11 +257,28 @@ const Items = styled.div`
 const ItemLeft = styled.div`
   width: 36%;
   margin-right: 20px;
+  div.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    div {
+      h3 {
+        font-size: 16px;
+      }
+      p {
+        font-size: 14px;
+      }
+    }
+  }
 `;
-const Ul = styled.ul``;
 const Li = styled.li`
   padding: 15px;
   border-bottom: 1px solid #ebeff2;
+  cursor: pointer;
   background: #fff;
 `;
 const SectionTop = styled.div`
@@ -316,16 +291,29 @@ const SectionLeft = styled.div`
 `;
 const ImageContainer = styled.div`
   margin-right: 10px;
+  width: 25px;
+  height:25px;
+  border-radius: 50%;
+  overflow: hidden;
+  &.border{
+    border:2px solid #109CF1;
+  }
+  
 `;
 const UserImage = styled.img`
-  border-radius: 50%;
+  width: 100%;
+  display: block;
+  
 `;
 const Name = styled.h3`
   font-family: "Poppins";
   font-weight: 600;
-  color: #192a3e;
+  color:#192a3e;
   font-size: 14px;
   margin-right: 67px;
+  &.active{
+    color:#109CF1;
+  }
 `;
 const Date = styled.h4`
   font-family: "Poppins";
@@ -349,7 +337,16 @@ const Counter = styled.div`
   color: #fff;
   padding: 2px 6px;
   font-size: 11px;
-  background: #109cf1;
+  background: ${({ status }) =>
+    status === "3"
+      ? "none"
+      : status === "4"
+      ? "none"
+      : status === "5"
+      ? "none"
+      : status === "6"
+      ? "none"
+      : "#109cf1"};
 `;
 const InnerMessage = styled.div`
   display: flex;
@@ -367,6 +364,8 @@ const Text = styled.h4``;
 
 const ChatContainer = styled.div`
   box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06);
+  width: ${({ active }) => (active ? "95%" : "97%")};
+  transition: 0.4s ease;
   background: #fff;
   border-radius: 4px;
 `;
@@ -401,8 +400,8 @@ const OptionContainer = styled.div``;
 const OptionImg = styled.img``;
 
 const ChatItems = styled.div`
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 25px;
+  padding-right: 25px;
 `;
 const ChatItem = styled.div`
   text-align: left;
@@ -475,3 +474,24 @@ const Imoji = styled.img`
   margin-right: 15px;
 `;
 const Attach = styled.img``;
+const Kumaran = styled.div`
+  display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: #fff;
+    padding:10px;
+    border-radius: 8px;
+    &.active{
+      background: red;
+    }
+    div {
+      h3 {
+        font-size: 16px;
+      }
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+`;

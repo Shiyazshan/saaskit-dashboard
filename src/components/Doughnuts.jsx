@@ -81,15 +81,16 @@ const Doughnuts = () => {
 };
 
 export default Doughnuts;
-const Container = styled.h1`
+const Container = styled.div`
   width: 400px;
   margin-left: 80px;
 `;
-const Text = styled.div`
+const Text = styled.h1`
   position: absolute;
   bottom: -116px;
   right: ${({ active }) => (active ? "205px" : "392px")};
   font-size: 54px;
   transition: 0.4s ease;
   color: #2ed47a;
+  font-weight: 700;
 `;
