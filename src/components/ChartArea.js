@@ -1,16 +1,14 @@
-import React, { PureComponent } from "react";
+import React from "react";
 
 import {
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
   AreaChart,
   Area,
 } from "recharts";
-import { curveCardinal } from "d3-shape";
 const data = [
   {
     name: "1 Dec",
@@ -28,7 +26,6 @@ const data = [
     name: "31 Dec",
     uv: 50,
   },
-
 ];
 
 const ChartArea = () => {
@@ -57,7 +54,6 @@ const ChartArea = () => {
             fill="#109CF1"
             fillOpacity={0.3}
           />
-          
         </AreaChart>
       </ResponsiveContainer>
     </>

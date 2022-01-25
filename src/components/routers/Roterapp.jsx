@@ -16,7 +16,6 @@ function Roterapp() {
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/contact/" element={<Contact />} />
-        <Route path="/task/" element={<Task />} />
         <Route path="/chat/" element={<Chat />} />
       </Routes>
     </Cover>

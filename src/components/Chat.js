@@ -118,10 +118,15 @@ const Chat = () => {
               >
                 <SectionTop>
                   <SectionLeft>
-                    <ImageContainer className={activa===item.id && 'border'}>
+                    <ImageContainer className={activa === item.id && "border"}>
                       <UserImage src={item.profile} alt="Image" />
                     </ImageContainer>
-                    <Name className={activa===item.id && 'active'} activa={activa} >{item.name}</Name>
+                    <Name
+                      className={activa === item.id && "active"}
+                      activa={activa}
+                    >
+                      {item.name}
+                    </Name>
                   </SectionLeft>
                   <Date>{item.date}</Date>
                 </SectionTop>
@@ -135,17 +140,16 @@ const Chat = () => {
                     ) : item.status === "3" ? (
                       <img src={Green} alt="" />
                     ) : item.status === "4" ? (
-                      <img src={Error} alt="image" />
+                      <img src={Error} alt="" />
                     ) : item.status === "5" ? (
-                      <img src={Sent} alt="image" />
-                    ) : ''
-                      
-                    }
+                      <img src={Sent} alt="" />
+                    ) : (
+                      ""
+                    )}
                   </Counter>
                 </SectionBottom>
               </Li>
             ))}
-            
           </ItemLeft>
           <ItemRight>
             <ChatContainer active={active}>
@@ -257,23 +261,6 @@ const Items = styled.div`
 const ItemLeft = styled.div`
   width: 36%;
   margin-right: 20px;
-  div.top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    background-color: #fff;
-    padding: 10px;
-    border-radius: 8px;
-    div {
-      h3 {
-        font-size: 16px;
-      }
-      p {
-        font-size: 14px;
-      }
-    }
-  }
 `;
 const Li = styled.li`
   padding: 15px;
@@ -292,27 +279,25 @@ const SectionLeft = styled.div`
 const ImageContainer = styled.div`
   margin-right: 10px;
   width: 25px;
-  height:25px;
+  height: 25px;
   border-radius: 50%;
   overflow: hidden;
-  &.border{
-    border:2px solid #109CF1;
+  &.border {
+    border: 2px solid #109cf1;
   }
-  
 `;
 const UserImage = styled.img`
   width: 100%;
   display: block;
-  
 `;
 const Name = styled.h3`
   font-family: "Poppins";
   font-weight: 600;
-  color:#192a3e;
+  color: #192a3e;
   font-size: 14px;
   margin-right: 67px;
-  &.active{
-    color:#109CF1;
+  &.active {
+    color: #109cf1;
   }
 `;
 const Date = styled.h4`
@@ -348,19 +333,6 @@ const Counter = styled.div`
       ? "none"
       : "#109cf1"};
 `;
-const InnerMessage = styled.div`
-  display: flex;
-  align-items: center;
-  margin-left: 34px;
-  font-size: 13px;
-  color: #90a0b7;
-  font-family: "Poppins";
-`;
-const WordpressImage = styled.img`
-  width: 5%;
-`;
-
-const Text = styled.h4``;
 
 const ChatContainer = styled.div`
   box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06);
@@ -474,24 +446,3 @@ const Imoji = styled.img`
   margin-right: 15px;
 `;
 const Attach = styled.img``;
-const Kumaran = styled.div`
-  display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    background-color: #fff;
-    padding:10px;
-    border-radius: 8px;
-    &.active{
-      background: red;
-    }
-    div {
-      h3 {
-        font-size: 16px;
-      }
-      p {
-        font-size: 14px;
-      }
-    }
-  }
-`;

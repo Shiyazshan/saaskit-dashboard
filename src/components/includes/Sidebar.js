@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { Context } from "../context/Store";
 
@@ -73,7 +73,7 @@ export default function Sidebar() {
                     Dashboard
                   </ItemName>
                 </List>
-                <List to="/task" onClick={() => setMenudata("task")}>
+                <List to="/" onClick={() => setMenudata("task")}>
                   <ImageContainer active={active}>
                     {menudata === "task" ? (
                       <ActiveImage src={ActiveTasks} alt="Image" />
