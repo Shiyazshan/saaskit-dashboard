@@ -22,7 +22,6 @@ export default function Contact() {
         setUsers(res.data.data.results);
       });
   }, []);
-  //   console.log(users,"dsdfsd");
 
   let renderItems = () => {
     return users.map((user) => (
@@ -137,13 +136,11 @@ const Button = styled.button`
 `;
 const Ul = styled.ul`
   display: flex;
-  /* align-items: center; */
   justify-content: space-between;
   border-bottom: 1px solid #ebeff2;
   padding: 10px;
 `;
 const Li = styled.li`
-  /* margin-left: 96px; */
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 11px;

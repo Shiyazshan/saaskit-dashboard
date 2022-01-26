@@ -61,7 +61,7 @@ export default function Sidebar() {
           <Nav>
             <Ul>
               <nav>
-                <List to="/" onClick={() => setMenudata("dashboard")}>
+                <List to="/" onClick={() => setMenudata("dashboard")}> 
                   <ImageContainer>
                     {menudata === "dashboard" ? (
                       <ActiveImage src={ActiveDashboard} alt="Image" />
