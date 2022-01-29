@@ -22,6 +22,10 @@ import ActiveEmail from "../../assets/images/icon/email-active.png";
 import ActiveDeals from "../../assets/images/icon/deals-active.png";
 import ActiveSettingsImg from "../../assets/images/icon/settings-active.png";
 import ActiveToggle from "../../assets/images/icon/toggle-active.png";
+import Round from "../../assets/images/side_bar/round.png";
+import Round1 from "../../assets/images/side_bar/round1.png";
+import Round2 from "../../assets/images/side_bar/round2.png";
+import Round3 from "../../assets/images/round3.png";
 
 export default function Sidebar() {
   const [menudata, setMenudata] = useState("");
@@ -43,7 +47,7 @@ export default function Sidebar() {
       <Container>
         <Aside
           onMouseOver={() => HoverActive(true)}
-          onMouseOut={() => HoverActive(false)}
+          // onMouseOut={() => HoverActive(false)}
           active={active}
         >
           <TopSection>
@@ -61,7 +65,7 @@ export default function Sidebar() {
           <Nav>
             <Ul>
               <nav>
-                <List to="/" onClick={() => setMenudata("dashboard")}> 
+                <List to="/" onClick={() => setMenudata("dashboard")}>
                   <ImageContainer>
                     {menudata === "dashboard" ? (
                       <ActiveImage src={ActiveDashboard} alt="Image" />
@@ -73,7 +77,11 @@ export default function Sidebar() {
                     Dashboard
                   </ItemName>
                 </List>
-                <List to="/" onClick={() => setMenudata("task")}>
+                <List
+                  to="/"
+                  className={menudata === "task" && "active"}
+                  onClick={() => setMenudata("task")}
+                >
                   <ImageContainer active={active}>
                     {menudata === "task" ? (
                       <ActiveImage src={ActiveTasks} alt="Image" />
@@ -81,11 +89,37 @@ export default function Sidebar() {
                       <Image src={Tasks} alt="Image" />
                     )}
                   </ImageContainer>
-                  <ItemName className={menudata === "task" && "active"}>
-                    Tasks
-                  </ItemName>
+                  <Flex>
+                    <ItemName className={menudata === "task" && "active"}>
+                      Tasks
+                    </ItemName>
+                    <Subnav>
+                      <ItemNav>
+                        <RoundContainer>
+                          <RoundImg src={Round} alt="Image" />
+                        </RoundContainer>
+                        <NavItem>Active</NavItem>
+                      </ItemNav>
+                      <ItemNav>
+                        <RoundContainer>
+                          <RoundImg src={Round2} alt="Image" />
+                        </RoundContainer>
+                        <NavItem>Completed</NavItem>
+                      </ItemNav>
+                      <ItemNav>
+                        <RoundContainer>
+                          <RoundImg src={Round3} alt="Image" />
+                        </RoundContainer>
+                        <NavItem>Ended</NavItem>
+                      </ItemNav>
+                    </Subnav>
+                  </Flex>
                 </List>
-                <List to="/" onClick={() => setMenudata("email")}>
+                <List
+                  to="/"
+                  className={menudata === "email" && "active"}
+                  onClick={() => setMenudata("email")}
+                >
                   <ImageContainer>
                     {menudata === "email" ? (
                       <ActiveImage src={ActiveEmail} alt="Image" />
@@ -93,9 +127,37 @@ export default function Sidebar() {
                       <Image src={Email} alt="Image" />
                     )}
                   </ImageContainer>
-                  <ItemName className={menudata === "email" && "active"}>
-                    Email
-                  </ItemName>
+                  <Flex>
+                    <ItemName className={menudata === "email" && "active"}>
+                      Email
+                    </ItemName>
+                    <Subnav>
+                      <ItemNav>
+                        <RoundContainer>
+                          <RoundImg src={Round} alt="Image" />
+                        </RoundContainer>
+                        <NavItem>Draft</NavItem>
+                      </ItemNav>
+                      <ItemNav>
+                        <RoundContainer>
+                          <RoundImg src={Round1} alt="Image" />
+                        </RoundContainer>
+                        <NavItem>Scheduled</NavItem>
+                      </ItemNav>
+                      <ItemNav>
+                        <RoundContainer>
+                          <RoundImg src={Round2} alt="Image" />
+                        </RoundContainer>
+                        <NavItem>Sent</NavItem>
+                      </ItemNav>
+                      <ItemNav>
+                        <RoundContainer>
+                          <RoundImg src={Round3} alt="Image" />
+                        </RoundContainer>
+                        <NavItem>Archeived</NavItem>
+                      </ItemNav>
+                    </Subnav>
+                  </Flex>
                 </List>
                 <List to="/contact" onClick={() => setMenudata("contacts")}>
                   <ImageContainer>
@@ -123,7 +185,11 @@ export default function Sidebar() {
                   </ItemName>
                 </List>
 
-                <List to="/" onClick={() => setMenudata("deals")}>
+                <List
+                  to="/"
+                  className={menudata === "deals" && "active"}
+                  onClick={() => setMenudata("deals")}
+                >
                   <ImageContainer>
                     {menudata === "deals" ? (
                       <ActiveImage src={ActiveDeals} alt="Image" />
@@ -131,9 +197,31 @@ export default function Sidebar() {
                       <Image src={Deals} alt="Image" />
                     )}
                   </ImageContainer>
-                  <ItemName className={menudata === "deals" && "active"}>
-                    Deals
-                  </ItemName>
+                  <Flex>
+                    <ItemName className={menudata === "deals" && "active"}>
+                      Deals
+                    </ItemName>
+                    <Subnav>
+                      <ItemNav>
+                        <RoundContainer>
+                          <RoundImg src={Round} alt="Image" />
+                        </RoundContainer>
+                        <NavItem>Low</NavItem>
+                      </ItemNav>
+                      <ItemNav>
+                        <RoundContainer>
+                          <RoundImg src={Round2} alt="Image" />
+                        </RoundContainer>
+                        <NavItem>High</NavItem>
+                      </ItemNav>
+                      <ItemNav>
+                        <RoundContainer>
+                          <RoundImg src={Round3} alt="Image" />
+                        </RoundContainer>
+                        <NavItem>Urgent</NavItem>
+                      </ItemNav>
+                    </Subnav>
+                  </Flex>
                 </List>
               </nav>
             </Ul>
@@ -242,11 +330,18 @@ const Ul = styled.div`
 `;
 const List = styled(Link)`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   margin-left: 20px;
   margin-bottom: 25px;
   cursor: pointer;
   text-decoration: none;
+  height: 26px;
+  overflow: hidden;
+  &.active {
+    height: 108px;
+    overflow: hidden;
+    transition: 0.4s ease;
+  }
 `;
 const ImageContainer = styled.div`
   margin-right: 28px;
@@ -257,10 +352,32 @@ const ItemName = styled.h4`
   color: #334d6e;
   font-family: "Poppins";
   font-weight: 700;
+  margin-bottom: 10px;
   font-size: 14px;
   &.active {
     color: #109cf1;
   }
+`;
+const Subnav = styled.div`
+  /* margin-top: 50px; */
+`;
+const ItemNav = styled.div`
+  display: flex;
+  align-items: center;
+`;
+const RoundImg = styled.img`
+  display: block;
+  width: 100%;
+`;
+const RoundContainer = styled.div`
+  margin-right: 10px;
+`;
+const Flex = styled.div`
+  /* display: flex; */
+`;
+const NavItem = styled.h3`
+  font-size: 13px;
+  color: #334d6e;
 `;
 const Settings = styled.div`
   display: flex;
